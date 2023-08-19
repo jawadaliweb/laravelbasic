@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
 //admin all routes
 Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/logout', 'destroy')->name('admin.logout');
+    Route::get('/admin/profile', 'profile')->name('admin.profile');
+    Route::get('/edit/profile', 'editprofile')->name('edit.profile');
 });
 
 require __DIR__.'/auth.php';
