@@ -33,6 +33,10 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/logout', 'destroy')->name('admin.logout');
     Route::get('/admin/profile', 'profile')->name('admin.profile');
     Route::get('/edit/profile', 'editprofile')->name('edit.profile');
+    Route::post('/store/profile', 'storeprofile')->name('store.profile');
+    
+    Route::get('/edit/password', 'editpassword')->name('edit.password');
+    Route::post('/update/password', 'updatepassword')->name('update.password');
 });
 
 require __DIR__.'/auth.php';

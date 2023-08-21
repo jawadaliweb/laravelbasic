@@ -4,9 +4,9 @@
 
 <div class="page-content">
     <div style="width:50%; "  class=" pt-2 container-fluid d-flex align-items-center justify-content-center mt-4  ">
-        <form >
+        <form method="POST" action="{{route('store.profile')}}" enctype="multipart/form-data">
             <!-- 2 column grid layout with text inputs for the first and last names -->
-            
+              @csrf
             <div class="row mb-4">
                 <div class="form-outline mb-4">
                     <label for="">Name</label>
@@ -23,23 +23,15 @@
                     <input value="{{$editdata->email}}" type="email" placeholder="Email" id="email" name="email" class="form-control" />
                   </div>
 
-
-                <div class="form-outline mb-4">
-                    <label for="">Password</label>
-                  <input  placeholder="New password" type="password" id="password" name="password" class="form-control" />
-                </div>
-
-                <div class="form-outline ">
-                    <label for="">Confirm Password</label>
-                    <input placeholder="Confirm Passowrd" type="password" id="form6Example2" class="form-control" />
-                  </div>
+                  
             </div>
 
             
             <div class="form-outline mb-4">
                 <label class="form-label" for="customFile">Select Image</label>
-                <input id="image" type="file" class="form-control" id="customFile" />
-                <img id="showimage" class="mt-4" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                <input id="image" type="file" class="form-control" name="profile_image" />
+                <img id="showimage" class="mt-4" src="{{ asset('upload/admin_images/' . ($editdata->profile_image ? $editdata->profile_image : 'no_image.png')) }}"
+
                 alt="Generic placeholder image" class="img-fluid"
                 style="width: 180px; border-radius: 10px;">
             </div>

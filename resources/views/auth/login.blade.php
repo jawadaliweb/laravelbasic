@@ -12,6 +12,10 @@
         <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 
     </head>
 
@@ -39,13 +43,13 @@
     
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
-                                        <input name="username"  id="username" class="form-control" type="text" required="" placeholder="Username">
+                                        <input name="username"  id="username" class="form-control" type="text"  placeholder="Username">
                                     </div>
                                 </div>
     
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
-                                        <input id="password" name="password" class="form-control" type="password" required="" placeholder="Password">
+                                        <input id="password" name="password" class="form-control" type="password"  placeholder="Password">
                                     </div>
                                 </div>
 
@@ -77,13 +81,42 @@
         <!-- end -->
 
         <!-- JAVASCRIPT -->
+
         <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/metismenu/metisMenu.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
         <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/js/app.js') }}"></script>
 
-        <script src="{{ asset('backend/assets/js/app.js"></script>
 
     </body>
+    
+        <script>
+    $(document).ready(function () {
+        $("form").submit(function (e) {
+            e.preventDefault();
+            var username = $("#username").val();
+            var password = $("#password").val();
+
+            if (!username & !password) {
+                toastr.error("Email and Password is required.");
+            } else if(!username) {
+                // If both username and password are provided, submit the form
+                toastr.error("Username is required.");
+            }
+            
+            else if (!password) {
+                    toastr.error("Password is required.");
+            } 
+
+            else {
+                // If both username and password are provided, submit the form
+                this.submit();
+            }
+        });
+    });
+</script>
+
+    
 </html>

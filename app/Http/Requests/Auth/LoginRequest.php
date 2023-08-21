@@ -32,6 +32,7 @@ class LoginRequest extends FormRequest
             'username' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
+
     }
 
     /**
@@ -45,12 +46,13 @@ class LoginRequest extends FormRequest
 
         if (! Auth::attempt($this->only('username', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
-
+            // Display an error toast with no title
+            toastr()->error('Incorrect Password or Email');
             throw ValidationException::withMessages([
                 'username' => trans('auth.failed'),
             ]);
         }
-
+        toastr()->success('Logged in Succesfully');
         RateLimiter::clear($this->throttleKey());
     }
 
@@ -65,15 +67,19 @@ class LoginRequest extends FormRequest
             return;
         }
 
+        toastr()->warning('Login Limit Exceeded');
         event(new Lockout($this));
 
         $seconds = RateLimiter::availableIn($this->throttleKey());
-
+        
         throw ValidationException::withMessages([
             'username' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
+                
+                
             ]),
+            
         ]);
     }
 
@@ -82,6 +88,8 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
+                
+
         return Str::transliterate(Str::lower($this->input('username')).'|'.$this->ip());
     }
 }
