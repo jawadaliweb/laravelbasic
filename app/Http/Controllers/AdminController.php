@@ -72,19 +72,12 @@ class AdminController extends Controller
 
     public function updatepassword(Request $request)
     {
-        
-        $customMessages = [
-            'required' => 'The :attribute field is required.',
-            'same' => 'The :attribute and :other should match.',
-        ];
-        
-
-        
-        $validateData = $request->validate([
+    
+       $validateData = $request->validate([
             'oldpassword' => 'required',
             'newpassword' => 'required',
             'confirmpassword' => 'required|same:newpassword',
-        ], $customMessages);
+        ]);
         
         $hash = Auth::user()->password;
         if (Hash::check($request->oldpassword,$hash)) {

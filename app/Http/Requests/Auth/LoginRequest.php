@@ -16,6 +16,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        
         return true;
     }
 
@@ -26,6 +27,8 @@ class LoginRequest extends FormRequest
      */
     public function rules(): array
     {
+       
+
         return [
             // 'email' => ['required', 'string', 'email'],
 
@@ -42,6 +45,7 @@ class LoginRequest extends FormRequest
      */
     public function authenticate(): void
     {
+        
         $this->ensureIsNotRateLimited();
 
         if (! Auth::attempt($this->only('username', 'password'), $this->boolean('remember'))) {
@@ -63,6 +67,7 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited(): void
     {
+        
         if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
@@ -88,6 +93,7 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
+        
                 
 
         return Str::transliterate(Str::lower($this->input('username')).'|'.$this->ip());
