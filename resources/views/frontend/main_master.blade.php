@@ -1,6 +1,6 @@
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/assets/img/favicon.png')}}">
 <!-- Place favicon.ico in the root directory -->
-
+@include('admin.body.topbar')
 <!-- CSS here -->
 <link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/assets/css/animate.min.css')}}">

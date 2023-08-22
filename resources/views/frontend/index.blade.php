@@ -1,3 +1,4 @@
+
 @extends('frontend.main_master')
 @section('frontfront')
     <!-- banner-area -->
