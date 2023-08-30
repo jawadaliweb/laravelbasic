@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('description')->nullable;
             $table->string('home_image')->nullable;
             $table->string('video_url')->nullable;
+            $table->string('back_color')->nullable;
             $table->timestamps();
         });
     }

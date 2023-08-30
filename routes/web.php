@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\home\HomeSliderController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-})->name('home');
+
+    Route::get('/', [HomeSliderController::class, 'Homesliderview'])->name('home');
+
+
 
 Route::get('/dashboard', function () {
     return view('admin.index');
@@ -37,6 +40,23 @@ Route::controller(AdminController::class)->group(function(){
     
     Route::get('/edit/password', 'editpassword')->name('edit.password');
     Route::post('/update/password', 'updatepassword')->name('update.password');
+});
+
+
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/admin/logout', 'destroy')->name('admin.logout');
+    Route::get('/admin/profile', 'profile')->name('admin.profile');
+    Route::get('/edit/profile', 'editprofile')->name('edit.profile');
+    Route::post('/store/profile', 'storeprofile')->name('store.profile');
+    
+    Route::get('/edit/password', 'editpassword')->name('edit.password');
+    Route::post('/update/password', 'updatepassword')->name('update.password');
+});
+
+
+Route::controller(HomeSliderController::class)->group(function(){
+    Route::get('/home/slide', 'HomeSlider')->name('home.slider');
+    Route::post('/update/slider', 'UpdateSider')->name('update.slider');
 });
 
 require __DIR__.'/auth.php';
