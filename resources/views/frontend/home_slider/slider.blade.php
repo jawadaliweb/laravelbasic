@@ -33,7 +33,7 @@
    
 .banner{
 
-background-color: {{ $homedata->back_color }};
+background-color: {{ optional($homedata)->back_color }};
 }
  
         
@@ -48,23 +48,23 @@ background-color: {{ $homedata->back_color }};
         <div class="row align-items-center justify-content-center justify-content-lg-between">
             <div class="col-lg-6 order-0 order-lg-2">
                 <div class="banner__img text-center text-xxl-end">
-            <img src="{{asset('upload/slider_images') . '/' . $homedata->home_image  }}" alt="">
+            <img src="{{asset('upload/slider_images') . '/' . optional($homedata)->home_image  }}" alt="">
         </div>
     </div>
     <div class="col-xl-5 col-lg-6">
         <div class="banner__content">
-            <h2 class="title wow fadeInUp" data-wow-delay=".2s">{{ $homedata->tittle }}</h2>
-            <p class="wow fadeInUp" data-wow-delay=".4s">{{ $homedata->description }}</p>
+            <h2 class="title wow fadeInUp" data-wow-delay=".2s">{{ optional($homedata)->title }}</h2>
+            <p class="wow fadeInUp" data-wow-delay=".4s">{{ optional($homedata)->description }}</p>
             <a href="about.html" class="btn banner__btn wow fadeInUp" data-wow-delay=".6s">more about me</a>
         </div>
     </div>
-    </div>
+</div>
     </div>
     <div class="scroll__down">
     <a href="#aboutSection" class="scroll__link">Scroll down</a>
     </div>
     <div class="banner__video">
-    <a href="{{$homedata->video_url}}" class="popup-video"><i class="fas fa-play"></i></a>
+    <a href="{{optional($homedata)->video_url}}" class="popup-video"><i class="fas fa-play"></i></a>
     </div>
     
 </section>

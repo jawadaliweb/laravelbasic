@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\home\HomeSliderController;
+use App\Http\Controllers\AboutPageController;
 
 
 /*
@@ -56,7 +57,12 @@ Route::controller(AdminController::class)->group(function(){
 
 Route::controller(HomeSliderController::class)->group(function(){
     Route::get('/home/slide', 'HomeSlider')->name('home.slider');
-    Route::post('/update/slider', 'UpdateSider')->name('update.slider');
+    Route::post('/update/slider', 'UpdateSlider')->name('update.slider');
 });
 
+
+Route::controller(AboutPageController::class)->group(function(){
+    Route::get('/about/', 'AboutShow')->name('aboutpage');
+    Route::get('/about/update', 'AboutUpdate')->name('AboutUpdate');
+});
 require __DIR__.'/auth.php';

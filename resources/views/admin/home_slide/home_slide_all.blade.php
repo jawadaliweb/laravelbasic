@@ -9,33 +9,45 @@
                 <form method="POST" action="{{ route('update.slider') }}" enctype="multipart/form-data">
                     <!-- 2 column grid layout with text inputs for the first and last names -->
                     @csrf
-                    <input type="hidden" name="id" value="{{ $homedata->id }}">
-
+                    
+                    @if(optional($homedata)->id)
+                    <input type="hidden" name="id" value="{{ optional($homedata)->id }}">
+                @endif
+                    
                     <div class="row mb-4">
                         <div class="form-outline mb-4">
                             <label for="">Tittle</label>
-                            <input value="{{ $homedata->tittle }}" placeholder="Tittle" type="text" id="tittle"
-                                name="tittle" class="form-control" />
+                            <input value="{{  optional($homedata)->title }}" placeholder="Title" type="text" id="title"
+                                name="title" class="form-control" />
                         </div>
 
                         <div class="form-outline mb-4">
                             <label for="">description</label>
-                            <input value="{{ $homedata->description }}" placeholder="Description" type="text"
+                            <input value="{{  optional($homedata)->description }}" placeholder="Description" type="text"
                                 id="description" name="description" class="form-control" />
                         </div>
 
                         <div class="form-outline mb-4">
                             <label for="">Video Url</label>
-                            <input value="{{ $homedata->video_url }}" type="text" placeholder="Video url" id="video_url"
+                            <input value="{{  optional($homedata)->video_url }}" type="text" placeholder="Video url" id="video_url"
                                 name="video_url" class="form-control" />
 
                         </div>
 
                         <div class="form-outline mb-4">
                             <label for="back_color">Background Color</label>
-                            <input value="{{ $homedata->back_color }}" type="text" id="back_color" name="back_color"
+                            <input value="{{  optional($homedata)->back_color }}" type="text" id="back_color" name="back_color"
                                 class="form-control jscolor" />
                         </div>
+
+
+    @php
+        foreach ($errors->all() as $error) {
+            toastr()->error($error);
+        }
+    @endphp
+
+
 
 
                     </div>
@@ -45,14 +57,14 @@
                         <label class="form-label" for="customFile">Slider Image</label>
                         <input id="image" type="file" class="form-control" name="home_image" />
                         <img id="showimage" class="mt-4"
-                            src="{{ asset('upload/slider_images/' . ($homedata->home_image ? $homedata->home_image : 'no_image.png')) }}"
+                            src="{{ asset('upload/slider_images/' . ( optional($homedata)->home_image ?  optional($homedata)->home_image : 'no_image.png')) }}"
                             alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
                     </div>
 
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-primary btn-block mb-4">Update Slider</button>
                 </form>
-
+ 
             </div>
 
         </div>

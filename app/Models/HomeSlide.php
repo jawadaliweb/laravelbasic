@@ -10,9 +10,9 @@ class HomeSlide extends Model
     use HasFactory;
     
     protected $fillable = [
-        'tittle', 
+        'title', 
         'description',
-        'video_url',
+        'video_url', 
         'home_image',
         'back_color',
     ];

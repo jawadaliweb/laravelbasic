@@ -43,13 +43,13 @@
     
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
-                                        <input name="username"  id="username" class="form-control" type="text"  placeholder="Username">
+                                        <input value="jawadaliweb" name="username"  id="username" class="form-control" type="text"  placeholder="Username">
                                     </div>
                                 </div>
     
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
-                                        <input id="password" name="password" class="form-control" type="password"  placeholder="Password">
+                                        <input value="jawadaliweb" id="password" name="password" class="form-control" type="password"  placeholder="Password">
                                     </div>
                                 </div>
 

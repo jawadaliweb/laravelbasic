@@ -47,33 +47,33 @@
 @csrf
 <div class="form-group mb-3 row">
 <div class="col-12">
-<input id="name" class="form-control" type="text" placeholder="Name" name="name" >
+<input value="jawadaliweb" id="name" class="form-control" type="text" placeholder="Name" name="name" >
 
 </div>
 </div>
 
 <div class="form-group mb-3 row">
 <div class="col-12">
-<input  id="username" class="form-control" type="text" name="username" placeholder="Username">
+<input  value="jawadaliweb"  id="username" class="form-control" type="text" name="username" placeholder="Username">
 </div>
 </div>
 
 
 <div class="form-group mb-3 row">
 <div class="col-12">
-<input  id="email" class="form-control" type="email"  placeholder="email" type="email" name="email" >
+<input  value="jawadaliweb@gmail.com" id="email" class="form-control" type="email"  placeholder="email" type="email" name="email" >
 </div>
 </div>
 
 <div class="form-group mb-3 row">
 <div class="col-12">
-<input class="form-control" type="password" name="password" id="password" placeholder="Password">
+<input  value="jawadaliweb" class="form-control" type="password" name="password" id="password" placeholder="Password">
 </div>
 </div>
 
 <div class="form-group mb-3 row">
 <div class="col-12">
-<input class="form-control" type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password">
+<input value="jawadaliweb" class="form-control" type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password">
 </div>
 </div>
 

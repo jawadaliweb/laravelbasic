@@ -16,6 +16,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "ckeditor4": "^4.23.0",
         "toastr": "^2.1.4",
         "yarn": "^1.22.19"
     }

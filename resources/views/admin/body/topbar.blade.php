@@ -39,6 +39,11 @@
                         <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                     </li>
                     @endif
+                    @if (Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}">logout</a>
+                    </li>
+                    @endif
                     
                 </ul>
             </div>

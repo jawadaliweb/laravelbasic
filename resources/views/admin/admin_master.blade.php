@@ -1,3 +1,4 @@
+@if(Auth::check())
     <head>
         
         <meta charset="utf-8" />
@@ -87,3 +88,39 @@
         <!-- App js -->
         <script src="{{ asset('backend/assets/js/app.js') }}"></script>
     </body>
+    @else
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Not Logged In</title>
+        <!-- Add Bootstrap CSS link -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">You are not logged in</h3>
+                            <p class="card-text text-center">Please go back to the sign-in page.</p>
+                            <div class="text-center">
+                                <a href="{{route('login')}}" class="btn btn-primary">Go to Sign In</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Add Bootstrap JS scripts (optional) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+    
+
+    @endif
