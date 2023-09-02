@@ -64,5 +64,7 @@ Route::controller(HomeSliderController::class)->group(function(){
 Route::controller(AboutPageController::class)->group(function(){
     Route::get('/about/', 'AboutShow')->name('aboutpage');
     Route::get('/about/update', 'AboutUpdate')->name('AboutUpdate');
+    Route::post('/aboutPage/update', 'AboutPageUpdate')->name('aboutpageupdate');
+    route::get('about/skills/add', 'Admin_Skills_Add')->name('skills.add');
 });
 require __DIR__.'/auth.php';

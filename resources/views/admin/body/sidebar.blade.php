@@ -24,6 +24,7 @@
                 <ul class="sub-menu" aria-expanded="false">
                     <li><a href="{{ route('home.slider')}}">Slides</a></li>
                 </ul>
+                
             </li>
 
 
@@ -33,7 +34,11 @@
                     <span>About Page</span>
                 </a>
                 <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="{{ route('AboutUpdate')}}">Slides</a></li>
+                    <li><a href="{{ route('AboutUpdate')}}">About Add</a></li>
+                </ul>
+
+                <ul class="sub-menu" aria-expanded="false">
+                    <li><a href="{{ route('skills.add')}}">Skills Add</a></li>
                 </ul>
             </li>
 
