@@ -66,5 +66,14 @@ Route::controller(AboutPageController::class)->group(function(){
     Route::get('/about/update', 'AboutUpdate')->name('AboutUpdate');
     Route::post('/aboutPage/update', 'AboutPageUpdate')->name('aboutpageupdate');
     route::get('about/skills/add', 'Admin_Skills_Add')->name('skills.add');
+    route::post('about/skills/adding', 'Admin_Skills_Adding')->name('skills.adding');
+    Route::delete('/skills/{id}', 'deleteSkill')->name('skills.delete');
+    route::get('about/education/add', 'Admin_Education_Add')->name('education.add');
+    route::post('about/Education/adding', 'Admin_Education_Adding')->name('education.adding');
+    Route::delete('/education/delete/{id}', 'deleteEducation')->name('education.delete');
+    Route::put('/education/update/{id}', 'updateEducation')->name('education.update');
+
+
 });
+
 require __DIR__.'/auth.php';

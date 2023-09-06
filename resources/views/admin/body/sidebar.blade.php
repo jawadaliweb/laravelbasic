@@ -10,7 +10,7 @@
             <li class="menu-title">Menu</li>
 
             <li>
-                <a href="index.html" class="waves-effect">
+                <a href="/dashboard" class="waves-effect">
                     <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">10</span>
                     <span>Dashboard</span>
                 </a>
@@ -38,7 +38,11 @@
                 </ul>
 
                 <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="{{ route('skills.add')}}">Skills Add</a></li>
+                    <li><a href="{{ route('skills.add')}}">Add Skills</a></li>
+                </ul>
+
+                <ul class="sub-menu" aria-expanded="false">
+                    <li><a href="{{ route('education.add')}}">Add Education</a></li>
                 </ul>
             </li>
 

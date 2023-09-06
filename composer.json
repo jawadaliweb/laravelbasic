@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/telescope": "^4.16",
         "laravel/tinker": "^2.7",
+        "nesbot/carbon": "^2.69",
         "rvxlab/filament-colorpicker": "*",
         "yoeunes/toastr": "^2.3"
     },
