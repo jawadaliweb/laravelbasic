@@ -9,11 +9,11 @@
                 <form method="POST" action="{{ route('update.slider') }}" enctype="multipart/form-data">
                     <!-- 2 column grid layout with text inputs for the first and last names -->
                     @csrf
-                    
+
                     @if(optional($homedata)->id)
                     <input type="hidden" name="id" value="{{ optional($homedata)->id }}">
-                @endif
-                    
+                    @endif
+
                     <div class="row mb-4">
                         <div class="form-outline mb-4">
                             <label for="">Tittle</label>
@@ -64,7 +64,7 @@
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-primary btn-block mb-4">Update Slider</button>
                 </form>
- 
+
             </div>
 
         </div>
@@ -93,4 +93,3 @@
             });
         </script>
     @endsection('admin')
-        

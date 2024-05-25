@@ -41,10 +41,10 @@
                     @endif
                     @if (Auth::check())
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}">logout</a>
+                        <a class="nav-link" href="{{ route('admin.logout') }}">logout</a>
                     </li>
                     @endif
-                    
+
                 </ul>
             </div>
         </div>

@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\home\HomeSliderController;
 use App\Http\Controllers\AboutPageController;
-
+use App\Http\Controllers\ResumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +25,7 @@ use App\Http\Controllers\AboutPageController;
 
 Route::get('/dashboard', function () {
     return view('admin.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,7 +38,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/profile', 'profile')->name('admin.profile');
     Route::get('/edit/profile', 'editprofile')->name('edit.profile');
     Route::post('/store/profile', 'storeprofile')->name('store.profile');
-    
+
     Route::get('/edit/password', 'editpassword')->name('edit.password');
     Route::post('/update/password', 'updatepassword')->name('update.password');
 });
@@ -49,7 +49,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/profile', 'profile')->name('admin.profile');
     Route::get('/edit/profile', 'editprofile')->name('edit.profile');
     Route::post('/store/profile', 'storeprofile')->name('store.profile');
-    
+
     Route::get('/edit/password', 'editpassword')->name('edit.password');
     Route::post('/update/password', 'updatepassword')->name('update.password');
 });
@@ -72,8 +72,11 @@ Route::controller(AboutPageController::class)->group(function(){
     route::post('about/Education/adding', 'Admin_Education_Adding')->name('education.adding');
     Route::delete('/education/delete/{id}', 'deleteEducation')->name('education.delete');
     Route::put('/education/update/{id}', 'updateEducation')->name('education.update');
-
-
 });
+
+Route::controller(ResumeController::class)->group(function(){
+    Route::get('/user/resume', 'ViewResume')->name('resumeview');
+});
+
 
 require __DIR__.'/auth.php';

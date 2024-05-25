@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
 
-   
+
     /**
      * Run the migrations.
      *
@@ -17,6 +17,8 @@ return new class extends Migration
     {
         Schema::create('AboutEducation', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
             $table->date('from_date');
             $table->date('to_date');

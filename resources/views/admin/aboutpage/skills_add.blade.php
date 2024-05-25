@@ -34,13 +34,13 @@
 
                             <div class="form-group">
                                 <label for="title">Skill Title</label>
-                                <input type="text" class="form-control" id="title" name="title[]" required>
+                                <input type="text" class="form-control" id="title" name="title" required>
                             </div>
 
                             <div style="margin-top: 15px" class="form-group">
                                 <label for="percentage">Skill Percentage</label>
                                 <div class="input-group">
-                                    <input type="range" class="form-range" id="percentage" name="percentage[]"
+                                    <input type="range" class="form-range" id="percentage" name="percentage"
                                         min="0" max="100" required>
                                     <output for="percentage" id="percentageOutput" class="mt-2">0%</output>
                                 </div>
@@ -66,7 +66,6 @@
                                 <div class=" col-md-6 mb-4">
                                     <div class="card" style="margin-top: -25px;">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $skill->title }}</h5>
                                             <h5 class="card-title">{{ $skill->title }}</h5>
                                             <div style="height: 20px;" class="progress">
                                                 <div class="progress-bar bg-primary" role="progressbar"
@@ -96,7 +95,7 @@
                                             </div>
 
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             @endforeach
@@ -108,7 +107,7 @@
 
                 </div>
             </div>
-    
+
         </div>
     </div>
 

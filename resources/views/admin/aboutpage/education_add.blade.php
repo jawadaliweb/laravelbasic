@@ -60,22 +60,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/boot
 
     <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" name="title[]" required>
+        <input type="text" class="form-control" id="title" name="title" required>
     </div>
 
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Details</label>
-        <textarea name="description[]" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
 
     <div class="form-group">
         <label for="From">From:</label>
-        <input name="from_date[]" type="date" id="birthday" name="birthday">
+        <input name="from_date" type="date" id="birthday" name="birthday">
     </div>
 
     <div class="form-group">
         <label for="To">To:</label>
-        <input name="to_date[]" type="date" id="birthday" name="birthday">
+        <input name="to_date" type="date" id="birthday" name="birthday">
     </div>
 
     <button style="margin-top: 15px" type="submit" class="btn btn-primary">Add Education</button>
@@ -129,7 +129,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/boot
                             <i class="fas fa-trash"></i> Update
                         </button>
 
-                        
+
                         <div id="id01" class="w3-modal">
                             <div class="w3-modal-content w3-animate-top w3-card-4">
                                 <header class="w3-container w3-teal">
@@ -139,7 +139,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/boot
                                     <h2>Modal Header</h2>
                                 </header>
                                 <div class="w3-container">
-                                    
+
                                     <form method="POST"
                                         action="{{ route('education.update', $education->id) }}">
                                         @csrf
@@ -150,23 +150,23 @@ href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/boot
                                             <label for="title">Title</label>
                                             <input value="{{$education->title}}" type="text" class="form-control" id="title" name="title" required>
                                         </div>
-                                    
+
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1">Details</label>
                                             <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$education->description}}</textarea>
                                         </div>
-                                    
+
                                         <div class="form-group">
                                             <label for="From">From:</label>
                                             <input value="{{$education->from_date}}" name="from_date" type="date" id="from_date" >
-                                            
+
                                         </div>
-                                    
+
                                         <div class="form-group">
                                             <label for="To">To:</label>
                                             <input  value="{{$education->to_date}}" name="to_date" type="date" id="to_date" >
                                         </div>
-                                    
+
                                         <button style="margin-top: 15px" type="submit" class="btn btn-primary">Add Education</button>
 
                                     </form>

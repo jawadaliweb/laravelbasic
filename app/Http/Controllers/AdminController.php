@@ -15,31 +15,30 @@ class AdminController extends Controller
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
-        
+
         $request->session()->regenerateToken();
-        
-        toastr()->success('Logged out successfully');
-        return redirect('/');
-        
-    }   
-    
+
+        return redirect('/')->with('success', 'Logout successfully');
+
+    }
+
     //end logout
 
     //profile method
     public function Profile()
     {
         $id = Auth::user()->id;
-        $adminData = User::find($id); 
+        $adminData = User::find($id);
 
         return view('admin.body.admin_profile', compact('adminData'));
     }
-    
+
 
     //edit profile
     public function editprofile()
     {
         $id = Auth::user()->id;
-        $editdata = User::find($id); 
+        $editdata = User::find($id);
         return view('admin.body.admin_edit', compact('editdata'));
 
     }
@@ -48,7 +47,7 @@ class AdminController extends Controller
 
     public function storeprofile(Request $request) {
         $id = Auth::user()->id;
-        $data = User::find($id); 
+        $data = User::find($id);
         $data->name = $request->name;
         $data->email = $request->email;
         $data->username = $request->username;
@@ -72,13 +71,13 @@ class AdminController extends Controller
 
     public function updatepassword(Request $request)
     {
-    
+
        $validateData = $request->validate([
             'oldpassword' => 'required',
             'newpassword' => 'required',
             'confirmpassword' => 'required|same:newpassword',
         ]);
-        
+
         $hash = Auth::user()->password;
         if (Hash::check($request->oldpassword,$hash)) {
             $users = User::find(Auth::id());
@@ -91,8 +90,8 @@ class AdminController extends Controller
         else
         {
             toastr()->error('old password not match');
-            return redirect()->back();            
+            return redirect()->back();
         }
-      
+
     }
 }

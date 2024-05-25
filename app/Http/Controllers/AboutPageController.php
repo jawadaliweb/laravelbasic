@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use App\Models\aboutpage; // Make sure your model name matches the actual model name, typically uppercase singular.
 use App\Models\AdminSkills; // Make sure your model name matches the actual model name, typically uppercase singular.
@@ -33,19 +34,18 @@ class AboutPageController extends Controller
             'Short_title' => $request->Short_title,
             'description'=> $request ->description,
             'resume_link'=> $request -> resume_link,
-            
         ];
 
         if ($request->hasfile('about_image')) {
-            
+
             $image = $request->file('about_image');
             $name_generate = time() . '_' . $image->getClientOriginalName();
             $image->move('upload/about_images/',$name_generate);
             $data['about_image'] = $name_generate;
         }
-    
+
     if($about_id) {
-        
+
         aboutpage::findorFail($about_id)->update($data);
     }
     else {
@@ -76,24 +76,16 @@ public function Admin_Education_Add()
 //skills adding
 public function Admin_Skills_Adding(Request $request)
 {
-    $titles = $request->input('title'); // Get an array of skill titles
-    $percentages = $request->input('percentage'); // Get an array of skill percentages
+    $user = Auth::user();
 
-    // Loop through the skills and create records for each skill
-    foreach ($titles as $index => $title) {
-        $data = [
-            'title' => $title,
-            'percentage' => $percentages[$index],
-            
-        ];
-
-        // Create a new skill record
-        AdminSkills::create($data);
-    }
+    AdminSkills::insert([
+        'title' =>  $request->input('title'),
+        'percentage' => $request->input('percentage'),
+        'user_id' => $user->id,
+    ]);
 
     return redirect('/about/skills/add/');
 }
-
 
 
 //skills delete
@@ -111,28 +103,20 @@ public function deleteSkill($id)
 //education adding
 public function Admin_Education_Adding(Request $request)
 {
-    $titles = $request->input('title'); // Get an array of skill titles
-    $descriptions = $request->input('description'); // Get an array of skill percentages
-    $from_dates = $request->input('from_date'); // Get an array of skill percentages
-    $to_dates = $request->input('to_date'); // Get an array of skill percentages
+    $user = Auth::user();
 
-    // Loop through the skills and create records for each skill
-    foreach ($titles as $index => $title) {
-        $data = [
-            'title' => $title,
-            'description' => $descriptions[$index],
-            'from_date' => $from_dates[$index],
-            'to_date' => $to_dates[$index],
-            
-        ];
-
-        // Create a new skill record
-        AboutEducation::create($data);
-    }
+    AboutEducation::insert([
+        'title' =>  $request->input('title'),
+        'description' => $request->input('description'),
+        'from_date' => $request->input('from_date'),
+        'to_date' => $request->input('to_date'),
+        'user_id' => $user->id,
+    ]);
 
     return redirect('/about/education/add/');
 }
-//education delete
+
+
 public function deleteEducation($id)
 {
     // Find the skill by its ID and delete it
@@ -168,5 +152,5 @@ public function updateEducation(Request $request, $id)
     return redirect('/about/education/add');
 }
 
- 
+
 }
