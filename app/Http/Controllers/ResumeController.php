@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class ResumeController extends Controller
 {
     public function ViewResume(){
-       return $user = Auth::user()->with('skills')->first();
+        $user = Auth::user()->load('skills');
         return view('frontend.resume.resume1', compact('user'));
     }
+
 }

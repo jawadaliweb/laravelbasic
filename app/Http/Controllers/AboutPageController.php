@@ -59,7 +59,10 @@ class AboutPageController extends Controller
 public function Admin_Skills_Add()
 {
 
-    $skillsData = AdminSkills::orderby('created_at','desc')->paginate(6);
+    $auth_user_id = Auth::user()->id;
+
+
+    $skillsData = AdminSkills::where('user_id',$auth_user_id)->orderby('created_at','desc')->paginate(6);
     return view('admin.aboutpage.skills_add',compact('skillsData'));
 }
 
@@ -67,7 +70,8 @@ public function Admin_Skills_Add()
 public function Admin_Education_Add()
 {
 
-    $EducationData = AboutEducation::orderby('created_at','desc')->paginate(6);
+    $auth_user_id = Auth::user()->id;
+    $EducationData = AboutEducation::where('user_id',$auth_user_id)->orderby('created_at','desc')->paginate(6);
     return view('admin.aboutpage.education_add',compact('EducationData'));
 }
 
