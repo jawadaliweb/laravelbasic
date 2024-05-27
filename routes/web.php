@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\home\HomeSliderController;
 use App\Http\Controllers\AboutPageController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ResumeController;
 
 /*
@@ -76,6 +77,11 @@ Route::controller(AboutPageController::class)->group(function(){
 
 Route::controller(ResumeController::class)->group(function(){
     Route::get('/user/resume', 'ViewResume')->name('resumeview');
+});
+
+Route::controller(ExperienceController::class)->group(function(){
+    Route::get('/experience/add', 'create')->name('create.experience');
+    Route::post('experience/create', 'store')->name('store.experience');
 });
 
 
